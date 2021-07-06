@@ -1,1 +1,5 @@
-# flask_blog
+# Flask_blog
+
+```
+   sh deploy.sh
+```
