@@ -3,6 +3,7 @@ from app.main import main
 
 
 @main.route("/")
-def index():
+@main.route("/home")
+def home():
     return render_template("index.html")
 

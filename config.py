@@ -35,12 +35,12 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("blog-dev.db")
+    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("dev.db")
 
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("blog-test.db")
+    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("test.db")
     WTF_CSRF_ENABLED = False
     import logging
 
@@ -49,7 +49,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("blog.db")
+    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("prod.db")
 
 
 config = {
