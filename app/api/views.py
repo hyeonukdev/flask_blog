@@ -14,7 +14,7 @@ def api_test():
         "a2": "2"
     }
     temp = request.args.get('temp')
-    result = url + ' + ' + str(params) + ' + ' + temp
+    result = url + ' + ' + str(params) + ' + ' + str(temp)
     return result
 
 
