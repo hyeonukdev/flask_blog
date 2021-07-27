@@ -19,7 +19,7 @@
                         class="home-video-user-image">
                 </div>
                 <div class="home-video-title-user">
-                    <a class="home-video-title" href="{{ url_for('project', id=project.id) }}">
+                   <a class="home-video-title" href="{{ url_for('main.project', id=project.id) }}">
                         {{ project.project_title }}
                     </a>
                     <br>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="home-video-tail-details">
-                <span class="home-video-views"> 286,000 views </span>
+                <span class="home-video-views"> {{ project.views_count }} views </span>
                 <span class="home-video-time">•{{ project.upload_time.strftime('%Y-%m-%d') }}</span>
             </div>
         </div>

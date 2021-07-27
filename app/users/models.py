@@ -6,7 +6,6 @@ from app.main.models import Project, Comments, Likes
 
 
 class User(UserMixin, db.Model):
-    __table_name__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(64), unique=True, nullable=False)
@@ -19,7 +18,7 @@ class User(UserMixin, db.Model):
     register_date = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow)
 
-    videos = db.relationship('Project', backref='author', lazy='dynamic')
+    projects = db.relationship('Project', backref='author', lazy='dynamic')
     comments = db.relationship('Comments', backref='author', lazy='dynamic')
     liked = db.relationship(
         'Likes', foreign_keys='Likes.user_id', backref='user', lazy='dynamic')
@@ -38,16 +37,16 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def like_project(self, project):
-        if not self.has_liked_video(project):
+        if not self.has_liked_project(project):
             like = Likes(user_id=self.id, project_id=project.id)
             db.session.add(like)
 
     def unlike_project(self, project):
-        if self.has_liked_video(project):
+        if self.has_liked_project(project):
             Likes.query.filter_by(user_id=self.id, project_id=project.id).delete()
 
-    def has_liked_video(self, video):
-        return Likes.query.filter(Likes.user_id == self.id, Likes.video_id == video.id).count() > 0
+    def has_liked_project(self, project):
+        return Likes.query.filter(Likes.user_id == self.id, Likes.project_id == project.id).count() > 0
 
 
 @login.user_loader

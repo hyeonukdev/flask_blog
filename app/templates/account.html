@@ -68,17 +68,17 @@
     </div>
 
     <div class="account-page-videos">
-        {% for video in videos %}
+        {% for project in projects %}
         <div class="account-video-box">
-            video
+            project
             <br>
             <a class="account-video-user-name" href="{{ url_for('users.account')}}">
-                {{ video.author.user_name }}
+                {{ project.author.user_name }}
             </a>
 
             <div class="account-video-tail-details">
-                <span class="account-video-views"> 286,000 views </span>
-                <span class="account-video-time">•{{ video.upload_time.strftime('%Y-%m-%d') }}</span>
+                <span class="account-video-views"> {{ project.views_count }} views </span>
+                <span class="account-video-time">•{{ project.upload_time.strftime('%Y-%m-%d') }}</span>
             </div>
         </div>
         {% endfor %}

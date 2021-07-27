@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Project(db.Model):
-    __table_name__ = 'project'
+
     id = db.Column(db.Integer, primary_key=True)
     project_title = db.Column(db.String(120), nullable=False)
     project_content = db.Column(db.String(40), nullable=False)
@@ -24,14 +24,14 @@ class Project(db.Model):
 
 
 class Likes(db.Model):
-    __table_name__ = 'likes'
+
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 class Comments(db.Model):
-    __table_name__ = 'comments'
+
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     comment_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)

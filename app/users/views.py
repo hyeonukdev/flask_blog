@@ -81,7 +81,7 @@ def account():
         form.user_name.data = current_user.user_name
         form.email.data = current_user.email
     avatar = url_for('static', filename='avatar/' + current_user.avatar)
-    return render_template('account.html', title='Account', form=form, avatar=avatar)
+    return render_template('account.html', title='Account', form=form, avatar=avatar, projects=current_user.projects)
 
 
 def save_avatar(form_picture):
