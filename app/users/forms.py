@@ -64,3 +64,27 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user is not None:
                 raise ValidationError('Please use a different email address.')
+
+
+class UpdateAccountForm(FlaskForm):
+    user_name = StringField('Username', validators=[
+                            DataRequired(), Length(min=2, max=20)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    avatar = FileField('Update Profile Picture', validators=[
+                       FileAllowed(['jpg', 'png', 'jpeg'])])
+    submit = SubmitField('Update')
+
+    def validate_username(self, user_name):
+        '''Validation if the username entered is already present or not'''
+
+        if user_name.data != current_user.user_name:
+            user = User.query.filter_by(user_name=user_name.data).first()
+            if user is not None:
+                raise ValidationError('Please use a different username.')
+
+    def validate_email(self, email):
+        '''Validation if the email entered is already present or not'''
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
+            if user is not None:
+                raise ValidationError('Please use a different email address.')

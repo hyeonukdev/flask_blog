@@ -144,3 +144,7 @@ cython_debug/
 dev.db
 test.db
 prod.db
+
+# file
+app/static/avatar
+app/static/videos

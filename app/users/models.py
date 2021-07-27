@@ -1,7 +1,8 @@
-from app import db, login
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from app import db, login
+from app.main.models import Project, Comments, Likes
 
 
 class User(UserMixin, db.Model):
@@ -18,6 +19,11 @@ class User(UserMixin, db.Model):
     register_date = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow)
 
+    videos = db.relationship('Project', backref='author', lazy='dynamic')
+    comments = db.relationship('Comments', backref='author', lazy='dynamic')
+    liked = db.relationship(
+        'Likes', foreign_keys='Likes.user_id', backref='user', lazy='dynamic')
+
     def __repr__(self):
         return f"User('{self.user_name}', '{self.email}')"
 
@@ -30,6 +36,18 @@ class User(UserMixin, db.Model):
         '''Checking the password filled with the password in database'''
 
         return check_password_hash(self.password_hash, password)
+
+    def like_project(self, project):
+        if not self.has_liked_video(project):
+            like = Likes(user_id=self.id, project_id=project.id)
+            db.session.add(like)
+
+    def unlike_project(self, project):
+        if self.has_liked_video(project):
+            Likes.query.filter_by(user_id=self.id, project_id=project.id).delete()
+
+    def has_liked_video(self, video):
+        return Likes.query.filter(Likes.user_id == self.id, Likes.video_id == video.id).count() > 0
 
 
 @login.user_loader

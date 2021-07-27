@@ -29,8 +29,7 @@
             <a class="navigation-link" href="{{ url_for('users.login')}}">Login</a>
             <a class="navigation-link" href="{{ url_for('users.register')}}">Register</a>
             {% else %}
-<!--            <a class="navigation-link" href="{{ url_for('account')}}">{{ current_user.user_name}}</a>-->
-<!--            <a class="navigation-link" href="{{ url_for('upload')}}">Upload</a>-->
+            <a class="navigation-link" href="{{ url_for('users.account')}}">{{ current_user.user_name}}</a>
             <a class="navigation-link" href="{{ url_for('users.logout')}}">Logout</a>
             {% endif %}
         </div>

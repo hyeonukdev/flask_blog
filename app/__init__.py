@@ -27,9 +27,6 @@ def create_app(config_name):
 
     with app.app_context():
 
-        # DB create
-        db.create_all()
-
         # Import parts of our application
         from .api import api as api_blueprint
         from .main import main as main_blueprint
@@ -39,6 +36,9 @@ def create_app(config_name):
         app.register_blueprint(api_blueprint)
         app.register_blueprint(main_blueprint)
         app.register_blueprint(users_blueprint)
+
+        # DB create
+        db.create_all()
 
 
     return app

@@ -9,14 +9,14 @@
     align-items: center;
 }
 
-.youtube-logo{
+.dpa-logo{
     font-weight: bold;
     font-size: 1.4rem;
     color: red;
     text-decoration: none;
     margin-left: 100px;
 }
-.youtube-logo:hover{
+.dpa-logo:hover{
     color: red;
     text-decoration: none;
 
