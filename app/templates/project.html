@@ -8,7 +8,7 @@
     <!-- Project view page -->
     {% block content %}
     <div>
-        <video class="video-view" autoplay controls>
+        <video class="video-view" autoplay controls height="300px" width="300px">
             <source src="{{ url_for('static', filename='videos/' + project.project_content) }}" type="video/mp4">
         </video>
     </div>

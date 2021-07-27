@@ -20,10 +20,10 @@
                 </div>
                 <div class="home-video-title-user">
                    <a class="home-video-title" href="{{ url_for('main.project', id=project.id) }}">
-                        {{ project.project_title }}
+                       {{ project.project_title }}
                     </a>
                     <br>
-                    <a class="home-video-user-name" href="{{ url_for('users.account')}}">{{ project.author.user_name }}</a>
+                    <a class="home-video-user-name" href="{{ url_for('users.account')}}">author : {{ project.author.user_name }}</a>
                 </div>
             </div>
             <div class="home-video-tail-details">
