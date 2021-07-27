@@ -139,3 +139,12 @@ dmypy.json
 cython_debug/
 
 .idea
+
+# db
+dev.db
+test.db
+prod.db
+
+# file
+app/static/avatar
+app/static/videos
