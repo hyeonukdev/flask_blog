@@ -12,6 +12,8 @@ class ProjectUploadForm(FlaskForm):
                            DataRequired(), Length(max=20)])
     project_content = FileField('Video', validators=[FileAllowed(
         ['mp4', 'mkv', '3gp', 'mov']), FileRequired()])
+    project_image = FileField('Image', validators=[FileAllowed(
+        ['jpeg', 'png', 'gif']), FileRequired()])
     submit = SubmitField('Upload')
 
 
@@ -21,6 +23,13 @@ class UpdateProjectForm(FlaskForm):
     description = TextField('Description', validators=[DataRequired()])
     category = StringField('Category', validators=[
                            DataRequired(), Length(max=20)])
+
+    # TODO : update video and images
+    # project_content = FileField('Video', validators=[FileAllowed(
+    #     ['mp4', 'mkv', '3gp', 'mov']), FileRequired()])
+    #
+    # project_image = FileField('Image', validators=[FileAllowed(
+    #     ['jpeg', 'png', 'gif']), FileRequired()])
     submit = SubmitField('Update')
 
 

@@ -148,3 +148,4 @@ prod.db
 # file
 app/static/avatar
 app/static/videos
+app/static/images

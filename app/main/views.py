@@ -13,6 +13,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home():
     """Home Page view"""
     projects = Project.query.all()
+    print("---")
+    print(projects)
     return render_template('home.html', title='Home', projects=projects)
 
 
@@ -28,24 +30,37 @@ def save_video(form_video):
 
     return video_fn
 
+def save_image(form_image):
+    '''Function to save image into static/images directory'''
+
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_image.filename)
+    image_fn = random_hex + f_ext
+    image_path = os.path.join(current_app.root_path, 'static/images', image_fn)
+
+    form_image.save(image_path)
+
+    return image_fn
+
 
 @main.route('/project/upload', methods=['GET', 'POST'])
 @login_required
 def upload():
-    """Video Upload Page view"""
+    """Project Upload Page view"""
 
     form = ProjectUploadForm()
 
     if form.validate_on_submit():
         video_file = save_video(form.project_content.data)
-        project = Project(project_title=form.project_title.data, project_content=video_file,
+        image_file = save_image(form.project_image.data)
+        project = Project(project_title=form.project_title.data, project_content=video_file, project_image=image_file,
                       description=form.description.data, category=form.category.data, author=current_user)
         db.session.add(project)
         db.session.commit()
         flash('Your Video has been posted!', 'success')
         return redirect(url_for('main.home'))
 
-    return render_template('upload.html', title='Upload Video', form=form, legend='Upload Your Video')
+    return render_template('upload.html', title='Upload Project', form=form, legend='Upload Your Project')
 
 
 @main.route("/project/<int:id>", methods=['GET', 'POST'])
