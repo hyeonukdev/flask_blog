@@ -13,8 +13,6 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home():
     """Home Page view"""
     projects = Project.query.all()
-    print("---")
-    print(projects)
     return render_template('home.html', title='Home', projects=projects)
 
 
@@ -85,7 +83,7 @@ def project(id):
 @main.route('/project/<int:id>/update', methods=['GET', 'POST'])
 @login_required
 def update_project(id):
-    """Function to update video contents"""
+    """Function to update project contents"""
 
     project = Project.query.get_or_404(id)
     if project.author != current_user:
@@ -104,6 +102,29 @@ def update_project(id):
         form.description.data = project.description
         form.category.data = project.category
     return render_template('update_project.html', title='Update Project', form=form, legend='Update Project')
+
+
+@main.route('/project/<int:id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_project(id):
+    """Function to delete project contents"""
+
+    project = Project.query.get_or_404(id)
+    print(f"project: {project}")
+    if project.author != current_user:
+        abort(403)
+        flash('You can not delete this project')
+        return redirect(url_for('main.home'))
+
+    Likes.query.filter_by(project_id=id).delete()
+
+    db.session.delete(project)
+    db.session.commit()
+
+    projects = Project.query.all()
+
+    flash('Your project has been deleted!', 'success')
+    return render_template('home.html', title='Home', projects=projects)
 
 
 @main.route('/project/like/<int:project_id>/<action>')
