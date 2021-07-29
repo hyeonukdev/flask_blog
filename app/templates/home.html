@@ -1,39 +1,103 @@
-<html>
-
-<head>
     {% extends "layout.html" %}
-</head>
 
-<body>
     {% block content %}
-    <div class="home-page-videos">
-        {% for project in projects %}
-        <div class="home-video-box">
-            <video class="home-video-view" controls>
-                <source src="{{ url_for('static', filename='videos/' + project.project_content) }}" type="video/mp4">
-            </video>
+    <!-- 메인 이미지 섹션 -->
+    <section class="main">
+        <div class="main-container">
+            <div class="inner">
+                <div class="title-container">
+                    <div class="title">캡스톤디자인</div>
 
-            <div class="home-video-image-title">
-                <div class="home-video-user-image-box">
-                    <img src="{{ url_for('static', filename='avatar/' + project.author.avatar) }}" alt="Avatar"
-                        class="home-video-user-image">
+                    <div class="message">
+                        캡스톤디자인 <br/>
+                        캡스톤디자인<br/>
+                        캡스톤디자인<br/>
+                        <br/>
+                        <a href="#"><button type="button" class="btn btn-danger" style="padding: 4px 8px">About</button></a>
+                        <a href="#"><button type="button" class="btn btn-primary" style="padding: 4px 8px">TEST</button></a>
+                    </div>
                 </div>
-                <div class="home-video-title-user">
-                   <a class="home-video-title" href="{{ url_for('main.project', id=project.id) }}">
-                       {{ project.project_title }}
-                    </a>
-                    <br>
-                    <a class="home-video-user-name" href="{{ url_for('users.account')}}">author : {{ project.author.user_name }}</a>
-                </div>
-            </div>
-            <div class="home-video-tail-details">
-                <span class="home-video-views"> {{ project.views_count }} views </span>
-                <span class="home-video-time">•{{ project.upload_time.strftime('%Y-%m-%d') }}</span>
             </div>
         </div>
-        {% endfor %}
-    </div>
-    {% endblock content %}
-</body>
+    </section>
 
-</html>
+    <section>
+        <div class="inner">
+            <div class="skill-container">
+                <div class="skill">
+                    <i class="fab fa-python skill-icon python-style"></i>
+                    <div class="skill-title">
+                        <div class="skill-name">업무 자동화</div>
+                        <div class="skill-usage">크롤링/자동매매</div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="far fa-chart-bar skill-icon analysis-style"></i>
+                    <div class="skill-title">
+                        <div class="skill-name">데이터 분석</div>
+                        <div class="skill-usage">데이터 분석/SQL</div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-app-store-ios skill-icon ai-style"></i>
+                    <div class="skill-title">
+                        <div class="skill-name">AI</div>
+                        <div class="skill-usage">인공지능 활용</div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-vuejs skill-icon vue-style"></i>
+                    <div class="skill-title">
+                        <div class="skill-name">풀스택</div>
+                        <div class="skill-usage">웹/앱 서비스</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="inner">
+            <div class="roadmap-container">
+                <div class="roadmap-title-container">
+                    <div class="roadmap-title">Archive</div>
+                    <div class="arrow-container">
+                        <i class="fas fa-chevron-circle-left slide-prev"></i>
+                        <i class="fas fa-chevron-circle-right slide-next"></i>
+                    </div>
+                </div>
+                <ul class="class-list" data-position="0">
+                    {% for project in projects %}
+                        <li class="class-card">
+                            <a href="{{ url_for('main.project', id=project.id) }}">
+                                <img src="{{ url_for('static', filename='covers/' + project.project_image) }}" alt="project cover" class="class-image" />
+                            </a>
+
+                            <div class="home-video-image-title">
+                                <div class="home-video-user-image-box">
+                                    <img src="{{ url_for('static', filename='avatar/' + project.author.avatar) }}" alt="Avatar"
+                                        class="home-video-user-image">
+                                </div>
+                                <div class="home-video-title-user">
+                                    <a class="home-video-title" href="{{ url_for('main.project', id=project.id) }}">
+                                       {{ project.project_title }}
+                                    </a>
+                                    <br />
+                                    <a class="home-video-user-name" href="{{ url_for('users.account')}}">{{ project.author.user_name }}</a>
+                                </div>
+                            </div>
+                            <div class="home-video-tail-details">
+                                <span class="home-video-views">view {{ project.views_count }} </span>
+                                <span class="home-video-views">like {{ project.likes_count }} </span>
+                                <span class="home-video-time"> {{ project.upload_time.strftime('%Y-%m-%d') }} </span>
+                            </div>
+                            <div class="home-video-tail-details2">
+
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    {% endblock content %}

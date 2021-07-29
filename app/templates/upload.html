@@ -64,6 +64,16 @@
           {% endif %}
         </div>
 
+        <div class="form-group">
+          {{ form.project_image.label() }}
+          {{ form.project_image(class="form-control-file") }}
+          {% if form.project_image.errors %}
+          {% for error in form.project_image.errors %}
+          <span class="text-danger">{{ error }}</span></br>
+          {% endfor %}
+          {% endif %}
+        </div>
+
         <div class='form-group'>
           {{ form.submit(class='btn btn-outline-info') }}
         </div>

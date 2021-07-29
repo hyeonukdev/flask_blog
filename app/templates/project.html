@@ -37,7 +37,7 @@
             <span><a class="button blue-button update-video-button" href="{{ url_for('main.update_project', id=project.id) }}">
                     Update
                 </a></span>
-            <span></span><a class="button blue-button delete-video-button" href="#">
+            <span></span><a class="button blue-button delete-video-button" href="{{ url_for('main.delete_project', id=project.id) }}">
                 Delete
             </a></span>
         </div>
