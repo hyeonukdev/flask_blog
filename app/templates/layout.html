@@ -22,6 +22,7 @@
 		<link rel="short icon" type="image/x-icon" href="img/fun-coding.ico" />
 
 		<!-- CSS Reset(1), 아이콘 폰트, 웹페이지 사용폰트, style.css -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/nomalize.css') }}">
 		<!-- https://fontawesome.com/start -->
 		<script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
 		<!-- Spoca Han Sans Neo: https://spoqa.github.io/spoqa-han-sans/ko-KR/ -->
@@ -34,7 +35,7 @@
 		/>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+
 
 	</head>
 	<body>
@@ -56,7 +57,6 @@
 				</div>
 			</div>
 		</header>
-
 
         <!-- Flashed Message Display -->
         {% with messages = get_flashed_messages(with_categories = true) %}
@@ -94,8 +94,7 @@
             crossorigin="anonymous"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
-    	<script type="text/babel" href="{{ url_for('static', filename='js/main.js') }}"></script>
-<!--	<script src="{{ url_for('static', filename='js/main.js') }}"></script>-->
+    	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
     </body>
 
 </html>
