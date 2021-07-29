@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    {% extends "layout.html" %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="home-page-videos">
+        {% for project in projects %}
+        <div class="home-video-box">
+<!--            <video class="home-video-view" controls>-->
+<!--                <source src="{{ url_for('static', filename='videos/' + project.project_content) }}" type="video/mp4">-->
+<!--            </video>-->
+            <img class="home-video-view" src="{{ url_for('static', filename='images/' + project.project_image) }}">
+            <div class="home-video-image-title">
+                <div class="home-video-user-image-box">
+                    <img src="{{ url_for('static', filename='avatar/' + project.author.avatar) }}" alt="Avatar"
+                        class="home-video-user-image">
+                </div>
+                <div class="home-video-title-user">
+                   <a class="home-video-title" href="{{ url_for('main.project', id=project.id) }}">
+                       {{ project.project_title }}
+                    </a>
+                    <br>
+                    <a class="home-video-user-name" href="{{ url_for('users.account')}}">author : {{ project.author.user_name }}</a>
+                </div>
+            </div>
+            <div class="home-video-tail-details">
+                <span class="home-video-views"> {{ project.views_count }} views </span>
+                <span class="home-video-time">•{{ project.upload_time.strftime('%Y-%m-%d') }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock content %}
+</body>
+
+</html>
