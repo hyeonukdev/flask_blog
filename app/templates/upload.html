@@ -25,6 +25,21 @@
         </div>
 
         <div class='form-group'>
+          {{ form.project_team_name.label(class='form-control-label') }}
+
+          {% if form.project_team_name.errors %}
+          {{ form.project_team_name(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_team_name.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_team_name(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
           {{ form.description.label(class='form-control-label') }}
 
           {% if form.description.errors %}
@@ -54,11 +69,116 @@
           {% endif %}
         </div>
 
+         <div class='form-group'>
+          {{ form.project_purpose.label(class='form-control-label') }}
+
+          {% if form.project_purpose.errors %}
+          {{ form.project_purpose(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_purpose.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_purpose(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.project_detail.label(class='form-control-label') }}
+
+          {% if form.project_detail.errors %}
+          {{ form.project_detail(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_detail.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_detail(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.project_background.label(class='form-control-label') }}
+
+          {% if form.project_background.errors %}
+          {{ form.project_background(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_background.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_background(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.project_date.label(class='form-control-label') }}
+
+          {% if form.project_date.errors %}
+          {{ form.project_date(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_date.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_date(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.project_url.label(class='form-control-label') }}
+
+          {% if form.project_url.errors %}
+          {{ form.project_url(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_url.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_url(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.project_keyword.label(class='form-control-label') }}
+
+          {% if form.project_keyword.errors %}
+          {{ form.project_keyword(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_keyword.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_keyword(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.project_etc.label(class='form-control-label') }}
+
+          {% if form.project_etc.errors %}
+          {{ form.project_etc(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.project_etc.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.project_etc(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
         <div class="form-group">
-          {{ form.project_content.label() }}
-          {{ form.project_content(class="form-control-file") }}
-          {% if form.project_content.errors %}
-          {% for error in form.project_content.errors %}
+          {{ form.project_video.label() }}
+          {{ form.project_video(class="form-control-file") }}
+          {% if form.project_video.errors %}
+          {% for error in form.project_video.errors %}
           <span class="text-danger">{{ error }}</span></br>
           {% endfor %}
           {% endif %}

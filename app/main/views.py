@@ -49,10 +49,23 @@ def upload():
     form = ProjectUploadForm()
 
     if form.validate_on_submit():
-        video_file = save_video(form.project_content.data)
+        video_file = save_video(form.project_video.data)
         image_file = save_image(form.project_image.data)
-        project = Project(project_title=form.project_title.data, project_content=video_file, project_image=image_file,
-                      description=form.description.data, category=form.category.data, author=current_user)
+        project = Project(project_title=form.project_title.data,
+                          project_team_name=form.project_team_name.data,
+                          description=form.description.data,
+                          category=form.category.data,
+                          project_purpose=form.project_purpose.data,
+                          project_detail=form.project_detail.data,
+                          project_background=form.project_background.data,
+                          project_date=form.project_date.data,
+                          project_url=form.project_url.data,
+                          project_keyword=form.project_keyword.data,
+                          project_etc=form.project_etc.data,
+                          project_video=video_file,
+                          project_image=image_file,
+                          author=current_user)
+
         db.session.add(project)
         db.session.commit()
         flash('Your Video has been posted!', 'success')
