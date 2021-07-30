@@ -7,10 +7,20 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Le
 class ProjectUploadForm(FlaskForm):
     project_title = TextField('Title', validators=[
                             DataRequired(), Length(max=60)])
+    project_team_name = TextField('Team Name', validators=[
+        DataRequired(), Length(max=60)])
     description = TextField('Description', validators=[DataRequired()])
     category = StringField('Category', validators=[
                            DataRequired(), Length(max=20)])
-    project_content = FileField('Video', validators=[FileAllowed(
+    project_purpose = StringField('Purpose', validators=[DataRequired()])
+    project_detail = StringField('Detail', validators=[DataRequired()])
+    project_background = StringField('Background', validators=[DataRequired()])
+    project_date = StringField('Date', validators=[DataRequired(), Length(max=30)])
+    project_url = StringField('Url', validators=[DataRequired()])
+    project_keyword = StringField('Keyword', validators=[DataRequired()])
+    project_etc = StringField('Etc', validators=[DataRequired()])
+
+    project_video = FileField('Video', validators=[FileAllowed(
         ['mp4', 'mkv', '3gp', 'mov']), FileRequired()])
     project_image = FileField('Image', validators=[FileAllowed(
         ['jpeg', 'png', 'gif']), FileRequired()])

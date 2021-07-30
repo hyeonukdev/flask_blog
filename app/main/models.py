@@ -6,15 +6,25 @@ class Project(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     project_title = db.Column(db.String(120), nullable=False)
+    project_team_name = db.Column(db.String(40), nullable=False)
+    # project_team_member = db.Column(db.String(60), nullable=False)
     project_image = db.Column(db.String(40), nullable=False)
-    project_content = db.Column(db.String(40), nullable=False)
+    # project_content = db.Column(db.String(40), nullable=False)
+    project_video = db.Column(db.String(40), nullable=False)
     description = db.Column(db.Text, nullable=False)
     category = db.Column(db.String, nullable=False)
+    project_purpose = db.Column(db.Text, nullable=False)
+    project_detail = db.Column(db.Text, nullable=False)
+    project_background = db.Column(db.Text, nullable=False)
+    project_date = db.Column(db.Text, nullable=False)
+    project_url = db.Column(db.Text, nullable=False)
+    project_keyword = db.Column(db.Text, nullable=False)
+    project_etc = db.Column(db.Text, nullable=False)
+
     views_count = db.Column(db.Integer, nullable=False, default=0)
     upload_time = db.Column(db.DateTime, nullable=False,
                             default=datetime.utcnow)
     likes_count = db.Column(db.Integer, nullable=False, default=0)
-
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     comments = db.relationship('Comments', backref='project', lazy='dynamic')
