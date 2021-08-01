@@ -15,8 +15,8 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[
                                      DataRequired(), Length(min=8), EqualTo('password')])
     age = IntegerField('Age', validators=[DataRequired()])
-    address = TextField('Address', validators=[
-                        DataRequired(), Length(min=4, max=40)])
+    university = StringField('Uni', validators=[DataRequired()])
+    department = StringField('Department', validators=[DataRequired()])
     submit = SubmitField('Sign Up')
 
     def validate_username(self, user_name):
@@ -45,31 +45,10 @@ class LoginForm(FlaskForm):
 class UpdateAccountForm(FlaskForm):
     user_name = StringField('Username', validators=[
                             DataRequired(), Length(min=2, max=20)])
+    age = IntegerField('Age', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    avatar = FileField('Update Profile Picture', validators=[
-                       FileAllowed(['jpg', 'png', 'jpeg'])])
-    submit = SubmitField('Update')
-
-    def validate_username(self, user_name):
-        '''Validation if the username entered is already present or not'''
-
-        if user_name.data != current_user.user_name:
-            user = User.query.filter_by(user_name=user_name.data).first()
-            if user is not None:
-                raise ValidationError('Please use a different username.')
-
-    def validate_email(self, email):
-        '''Validation if the email entered is already present or not'''
-        if email.data != current_user.email:
-            user = User.query.filter_by(email=email.data).first()
-            if user is not None:
-                raise ValidationError('Please use a different email address.')
-
-
-class UpdateAccountForm(FlaskForm):
-    user_name = StringField('Username', validators=[
-                            DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    university = StringField('Uni', validators=[DataRequired()])
+    department = StringField('Department', validators=[DataRequired()])
     avatar = FileField('Update Profile Picture', validators=[
                        FileAllowed(['jpg', 'png', 'jpeg'])])
     submit = SubmitField('Update')

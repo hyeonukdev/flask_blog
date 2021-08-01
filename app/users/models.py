@@ -14,7 +14,8 @@ class User(UserMixin, db.Model):
     avatar = db.Column(db.String(20), nullable=False, default='avatar.png')
     cover_pic = db.Column(db.String(20), nullable=False, default='cover.png')
     age = db.Column(db.Integer, nullable=False)
-    address = db.Column(db.Text, nullable=False)
+    university = db.Column(db.Text, nullable=False)
+    department = db.Column(db.Text, nullable=False)
     register_date = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow)
 

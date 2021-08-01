@@ -85,17 +85,32 @@
         </div>
 
         <div class='form-group'>
-          {{ form.address.label(class='form-control-label') }}
+          {{ form.university.label(class='form-control-label') }}
 
-          {% if form.address.errors %}
-          {{ form.address(class='form-control form-control-lg is-invalid') }}
+          {% if form.university.errors %}
+          {{ form.university(class='form-control form-control-lg is-invalid') }}
           <div class="invalid-feedback">
-            {% for error in form.address.errors %}
+            {% for error in form.university.errors %}
             <span> {{ error }} </span>
             {% endfor %}
           </div>
           {% else %}
-          {{ form.address(class='form-control form-control-lg') }}
+          {{ form.university(class='form-control form-control-lg') }}
+          {% endif %}
+        </div>
+
+        <div class='form-group'>
+          {{ form.department.label(class='form-control-label') }}
+
+          {% if form.department.errors %}
+          {{ form.department(class='form-control form-control-lg is-invalid') }}
+          <div class="invalid-feedback">
+            {% for error in form.department.errors %}
+            <span> {{ error }} </span>
+            {% endfor %}
+          </div>
+          {% else %}
+          {{ form.department(class='form-control form-control-lg') }}
           {% endif %}
         </div>
       </fieldset>
