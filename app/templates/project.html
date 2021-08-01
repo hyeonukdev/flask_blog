@@ -7,12 +7,25 @@
 <body>
     <!-- Project view page -->
     {% block content %}
+    <section class="not-main">
+        <div class="main-container">
+        </div>
+    </section>
+
+    <p class="video-view-title">Title : {{ project.project_title }}</p>
+
     <div>
-        <video class="video-view" autoplay controls height="300px" width="300px">
+        <p class="video-view-title">Video</p>
+        <video class="video-view" controls height="500px">
             <source src="{{ url_for('static', filename='videos/' + project.project_video) }}" type="video/mp4">
         </video>
     </div>
-    <p class="video-view-title">{{ project.project_title }}</p>
+
+    <div>
+        <p class="video-view-title">Image</p>
+        <img class="video-view" height="500px" src="{{ url_for('static', filename='covers/' + project.project_image) }}">
+    </div>
+
     <div class="video-view-tail-details">
         <span class="video-view-views"> {{ project.views_count }} Views </span>
         <span class="video-view-time">•{{ project.upload_time.strftime('%Y-%m-%d') }}</span>
@@ -51,11 +64,10 @@
             class="video-view-user-image">
         <div>
             <a class="video-view-user-name" href="{{ url_for('users.account')}}">{{ project.author.user_name }}</a>
-            <p class="video-view-subscriber"> 1.2M Subscribers </p>
+            <a class="video-view-user-name" href="{{ url_for('users.account')}}">{{ project.author.email }}</a>
         </div>
     </div>
 
-    <div class="video-view-description"> {{project.description}} </div>
     <br>
     <div style="margin-left: 2%;">
         <span
@@ -63,6 +75,63 @@
             Category:</span> {{project.category}}
     </div>
     <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Description:</span> {{project.description}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Description:</span> {{project.project_purpose}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Detail:</span> {{project.project_detail}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Background:</span> {{project.project_background}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Date:</span> {{project.project_date}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            URL:</span> {{project.project_url}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            Keyword:</span> {{project.project_keyword}}
+    </div>
+    <br>
+
+    <div style="margin-left: 2%;">
+        <span
+            style=" font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; margin-right: 10px;">
+            ETC:</span> {{project.project_etc}}
+    </div>
+    <br>
+
     <hr style="width: 1280px; margin-left: 2%;">
 
     <p class="video-comments-count">

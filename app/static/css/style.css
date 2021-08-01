@@ -89,6 +89,15 @@ section {
 	position: relative;
 }
 
+.not-main {
+	height: 0px; /* 화면 이미지 고정 */
+	/*background-image: url('https://www.fun-coding.org/assets_lms/images/photodune-4161018-group-of-students-m.jpg');*/
+	background-size: cover;
+	background-position: center 10%; /* 이미지 위치를 살짝 위로 올리기 위한 position 설정 */
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+
 .main {
 	height: 360px; /* 화면 이미지 고정 */
 	background-image: url('https://www.fun-coding.org/assets_lms/images/photodune-4161018-group-of-students-m.jpg');
