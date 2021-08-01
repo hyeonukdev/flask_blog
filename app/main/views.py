@@ -111,6 +111,13 @@ def update_project(id):
             project.project_video = save_video(form.project_video.data)
         if form.project_image.data:
             project.project_image = save_image(form.project_image.data)
+        project.project_purpose = form.project_purpose.data
+        project.project_detail = form.project_detail.data
+        project.project_background = form.project_background.data
+        project.project_date = form.project_date.data
+        project.project_url = form.project_url.data
+        project.project_keyword = form.project_keyword.data
+        project.project_etc = form.project_etc.data
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('main.project', id=project.id))
@@ -118,6 +125,13 @@ def update_project(id):
         form.project_title.data = project.project_title
         form.description.data = project.description
         form.category.data = project.category
+        form.project_purpose.data = project.project_purpose
+        form.project_detail.data = project.project_detail
+        form.project_background.data = project.project_background
+        form.project_date.data = project.project_date
+        form.project_url.data = project.project_url
+        form.project_keyword.data = project.project_keyword
+        form.project_etc.data = project.project_etc
         form.project_video.data = project.project_video
         form.project_image.data = project.project_image
     return render_template('update_project.html', title='Update Project', form=form, legend='Update Project')
