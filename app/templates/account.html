@@ -6,6 +6,10 @@
 
 <body>
     {% block content %}
+    <section class="not-main">
+        <div class="main-container">
+        </div>
+    </section>
 
     <div class="user-details">
         <img src="{{ avatar }}" alt="Avatar" class="user-profile-image">
@@ -36,6 +40,20 @@
                     {% endif %}
                 </div>
 
+                 <div class="form-group">
+                    {{ form.age.label(class="form-control-label") }}
+                    {% if form.age.errors %}
+                    {{ form.age(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.age.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.age(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
@@ -47,6 +65,34 @@
                     </div>
                     {% else %}
                     {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.university.label(class="form-control-label") }}
+                    {% if form.university.errors %}
+                    {{ form.university(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.university.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.university(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.department.label(class="form-control-label") }}
+                    {% if form.department.errors %}
+                    {{ form.department(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.department.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.department(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
 
@@ -70,7 +116,7 @@
     <div class="account-page-videos">
         {% for project in projects %}
         <div class="account-video-box">
-            project
+            {{ project.project_title }}
             <br>
             <a class="account-video-user-name" href="{{ url_for('users.account')}}">
                 {{ project.author.user_name }}

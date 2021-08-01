@@ -24,7 +24,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(user_name=form.user_name.data, email=form.email.data,
-                    age=form.age.data, address=form.address.data)
+                    age=form.age.data, university=form.university.data, department=form.department.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
@@ -74,12 +74,18 @@ def account():
             current_user.avatar = picture_file
         current_user.user_name = form.user_name.data
         current_user.email = form.email.data
+        current_user.age = form.age.data
+        current_user.university = form.university.data
+        current_user.department = form.department.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
         form.user_name.data = current_user.user_name
         form.email.data = current_user.email
+        form.age.data = current_user.age
+        form.university.data = current_user.university
+        form.department.data = current_user.department
     avatar = url_for('static', filename='avatar/' + current_user.avatar)
     return render_template('account.html', title='Account', form=form, avatar=avatar, projects=current_user.projects)
 
