@@ -10,6 +10,10 @@ WORKDIR /home/ubuntu/
 RUN git clone https://github.com/hyeonukdev/flask_blog.git
 WORKDIR flask_blog
 
+# flask-app에 필요한 dir 생성
+RUN mkdir -p app/static/videos
+RUN mkdir -p app/static/covers
+
 # requirements.txt 파일 내부에 있는 라이브러리 전부 설치
 RUN pip3 install -r requirements.txt
 
