@@ -14,4 +14,4 @@ WORKDIR flask_blog
 RUN pip3 install -r requirements.txt
 
 # container 실행 시, 실행할 명령어
-CMD ["python", "run.py"]
+CMD ["python", "run.py", "--host", "0.0.0.0"]
