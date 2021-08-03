@@ -18,6 +18,7 @@ def create_app(config_name):
     """Create Flask application."""
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    app.config.SWAGGER_UI_DOC_EXPANSION = 'full'
     config[config_name].init_app(app)
 
     db.init_app(app)
